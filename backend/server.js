@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const db = require("./database");
 
 const app = express();
-const PORT = 5000;
+const PORT = 5050;
 const SECRET_KEY = "supersecretkey_for_simple_app";
 
 app.use(cors());

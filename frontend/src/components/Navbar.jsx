@@ -35,7 +35,7 @@ export default function Navbar({ user, setUser }) {
               </button>
             </>
           ) : (
-            <Link to="/lo gin" className="btn">
+            <Link to="/login" className="btn">
               <LogIn size={18} /> Entrar
             </Link>
           )}
