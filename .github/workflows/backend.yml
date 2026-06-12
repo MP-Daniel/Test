@@ -31,7 +31,7 @@ jobs:
       #Iniciar backend
       - name: Start backend server
         working-directory: ./backend
-        run: node server.js 
+        run: node server.js &
 
       #Iniciar frontend
       - name: Start frontend 
@@ -40,7 +40,7 @@ jobs:
 
       #Esperar que ambos arranquen
       - name: Wait for servers to start
-        run: sleep 10
+        run: sleep 20
 
       #Ejecutar pruebas
       - name: Run backend tests
