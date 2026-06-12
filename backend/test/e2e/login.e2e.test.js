@@ -2,7 +2,7 @@ const { Builder, By, until } = require("selenium-webdriver");
 const safari = require("selenium-webdriver/safari");
 const { expect } = require("chai");
 
-const FRONTEND_URL = "http://localhost:5174";
+const FRONTEND_URL = "http://localhost:5173";
 
 describe("Login E2E - Safari", function () {
   this.timeout(40000);
