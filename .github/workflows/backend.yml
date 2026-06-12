@@ -10,19 +10,43 @@ jobs:
   build:
     runs-on: macos-latest
 
-    defaults:
-      run:
-        working-directory: backend
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
-        cache: 'npm'
-        cache-dependency-path: backend/package-lock.json
-    - name: Install dependencies
-      run: npm install
-    - name: Run Backend Tests
-      run: npm test
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      
+      #Bakend
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: npm install
+      
+       #Frontend
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+        
+      #Iniciar backend
+      - name: Start backend server
+        working-directory: ./backend
+        run: node server.js 
+
+      #Iniciar frontend
+      - name: Start frontend 
+        working-directory: ./frontend
+        run: npm run dev
+
+      #Esperar que ambos arranquen
+      - name: Wait for servers to start
+        run: sleep 10
+
+      #Ejecutar pruebas
+      - name: Run backend tests
+        working-directory: ./backend
+        run: npm test
+
+
+      
+
